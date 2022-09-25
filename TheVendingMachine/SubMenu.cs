@@ -47,7 +47,7 @@ namespace TheVendingMachine
 
                         if (this.vm.ArticleExists(choice) && vm.Purchase(choice))
                         {
-                            Console.WriteLine($"Njut av {vm.VendingMachineArticles[choice].ArticleName}\n{this.vm.VendingMachineArticles[choice].BuyerMessage}");
+                            Console.WriteLine($"Njut av {vm.VendingMachineArticles[choice].articleName}\n{this.vm.VendingMachineArticles[choice].BuyerMessage}");
                             break;
                         }
                         else if (!this.vm.ArticleExists(choice))

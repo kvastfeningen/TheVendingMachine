@@ -8,7 +8,7 @@ namespace TheVendingMachine
 {
     public abstract class VendingArticle
     {
-        public string ArticleName { get; set; }
+        public string articleName { get; set; }
 
         public int Price { get; set; }
 
@@ -21,10 +21,14 @@ namespace TheVendingMachine
 
         public VendingArticle(string articleName, int price, string Message)
         {
-            this.ArticleName = articleName;
+            this.articleName = articleName;
             this.Price = price;
             this.BuyerMessage = Message;
         }
 
+        public static implicit operator string(VendingArticle v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

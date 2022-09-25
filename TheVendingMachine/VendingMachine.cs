@@ -16,12 +16,12 @@ namespace TheVendingMachine
        public MoneyHandler MoneyHandler { get; }
         public string NotEnoughMoneyError = "För lite pengar!";
         public string MessageToUser;
+        public readonly object FileHandler;
 
-       
         public VendingMachine()
         {
-            this.VendingMachineArticles = this.HandleFiles.GetVendingArticles();
-            this.MoneyHandler = new MoneyHandler(this.Log);
+            VendingMachineArticles = HandleFiles.GetVendingArticles();
+            MoneyHandler = new MoneyHandler(Log);
             
         }
 
@@ -93,7 +93,7 @@ namespace TheVendingMachine
             
             {
                 
-                string message = $"{this.VendingMachineArticles[articleNumber].ArticleName.ToUpper()} {articleNumber}";
+                string message = $"{this.VendingMachineArticles[articleNumber].articleName.ToUpper()} {articleNumber}";
 
                 
                 decimal before = this.MoneyHandler.MoneyInserted;
@@ -119,11 +119,11 @@ namespace TheVendingMachine
         {
            
             Console.WriteLine($"\n\n{"#".PadRight(5)} { "Artikel".PadRight(37) } { "Pris".PadLeft(7)}");
-            foreach (KeyValuePair<string, VendingArticle> kvp in this.VendingMachineArticles)
+            foreach (KeyValuePair<string, VendingArticle> kvp in VendingMachineArticles)
             {
 
                 string articleNumber = kvp.Key.PadRight(5);
-                string productName = kvp.Value.ArticleName.PadRight(40);
+                string productName = kvp.Value.articleName.PadRight(40);
                 string price = kvp.Value.Price.ToString("C").PadLeft(7);
                 Console.WriteLine($"{articleNumber} {productName} {price}");
             }
