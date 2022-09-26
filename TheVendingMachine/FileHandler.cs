@@ -20,9 +20,10 @@ namespace TheVendingMachine
             Dictionary<string, VendingArticle> articles = new Dictionary<string, VendingArticle>();
 
             string file = string.Empty;
-            if (File.Exists("ArticleFile.csv"))
+            if (File.Exists("C:\\Users\\Elev\\Source\\Repos\\TheVendingMachine\\bin\\Debug\\netcoreapp3.1\\ArticleFile.csv"))
+         
             {
-                file = "ArticleFile.csv";
+                file = "C:\\Users\\Elev\\Source\\Repos\\TheVendingMachine\\bin\\Debug\\netcoreapp3.1\\ArticleFile.csv";
 
                 try
                 {
@@ -30,20 +31,20 @@ namespace TheVendingMachine
                     {
                         while (!sr.EndOfStream)
                         {
-                           
+
                             string line = sr.ReadLine();
 
                             string[] articleDetails = line.Split("|");
 
                             string articleName = articleDetails[Pos_articleName];
-                            
+
 
                             if (!int.TryParse(articleDetails[Pos_price], out int Price))
                             {
-                                
+
                             }
 
-                           
+
                             VendingArticle article;
 
                             switch (articleDetails[Pos_articleType])
@@ -74,7 +75,7 @@ namespace TheVendingMachine
             else
             {
                 Console.WriteLine("Input file is missing!");
-               
+
             }
 
             return articles;
